@@ -1,9 +1,10 @@
 import json
 import boto3
+import template
 
 
 def lambda_handler(event, context):
-  data = boto3.client('dynamodb').scan(TableName='Project4Group2Table')
+  data = boto3.client('dynamodb').scan(TableName=process.env.DatabaseTable)
 
   response = {
       'statusCode': 200,
