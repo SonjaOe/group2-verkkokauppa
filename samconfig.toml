@@ -1,0 +1,12 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "g2-sam-verkkokauppa"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-uarb2g13w8sg"
+s3_prefix = "g2-sam-verkkokauppa"
+region = "eu-central-1"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+disable_rollback = true
+image_repositories = []
