@@ -60,6 +60,3 @@ Outputs:
   group2verkkokauppaApi:
     Description: "API Gateway endpoint URL for Prod stage for Hello World function"
     Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/inventory/"
-  tableNameProject:
-    Description: "name of the table"
-    Value: !GetAtt Project4Group2DynamoDB.attributeName
