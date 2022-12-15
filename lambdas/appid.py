@@ -3,11 +3,22 @@ import boto3
 import os
 
 def lambda_handler(event, context):
-  #data = boto3.client('dynamodb').scan(TableName=os.environ['TableName'])
+  client = boto3.client('dynamodb')
+  response = client.get_item(
+    Key={
+        'type': {
+            'S': 'taikamatto',
+        },
+        'id': {
+            'N': event['pathParameters']['id'],
+        },
+    },
+    TableName=os.environ['TableName'],
+)
 
   response = {
       'statusCode': 200,
-      'body': json.dumps(event['pathParameters']['id']),
+      'body': json.dumps(response),
       'headers': {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
