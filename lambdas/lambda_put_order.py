@@ -4,7 +4,7 @@ import os
 
 #lambda for putting order to dynamoDB
 def lambda_handler(event, context):
-    data = boto3.client('dynamodb').put_item(TableName=os.environ['TableName'], Item=event['body'])
+    data = boto3.client('dynamodb').put_item(TableName=os.environ['TableName'], Item=json.dumps(event['body']))
     response = {
         'statusCode': 200,
         'body': {"goatsacrificed": "yes"},
