@@ -14,17 +14,16 @@ Parameters:
     Type: String
     Default: malgorzata.zaremba@brightstraining.com
 Resources:
-  MySNSTopic:
+  MySNSTopicTaikamatto:
     Type: AWS::SNS::Topic
     Properties:
-      TopicName: "TaikamattoOrder"
       KmsMasterKeyId: alias/aws/sns
   MySubscription:
     Type: AWS::SNS::Subscription
     Properties:
       Endpoint: !Ref Subemail
       Protocol: email
-      TopicArn: !Ref MySNSTopic
+      TopicArn: !Ref MySNSTopicTaikamatto
   Project4Group2DynamoDB: 
     Type: AWS::DynamoDB::Table
     Properties: 
@@ -97,7 +96,7 @@ Resources:
         - AmazonDynamoDBFullAccess
       Environment:
         Variables:
-          TopicArn: !Ref MySNSTopic
+          TopicArn: !Ref MySNSTopicTaikamatto
           TableName: !Ref Project4Group2DynamoDB
       Events:
         GetInventory:
