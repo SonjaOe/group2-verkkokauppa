@@ -8,7 +8,7 @@ def lambda_handler(event, context):
   Items = []
 
   for item in data['Items']:
-    if item['type'] == 'taikamatto':
+    if item['type']['S'] == 'taikamatto':
       Items.append(item)
 
   response = {
