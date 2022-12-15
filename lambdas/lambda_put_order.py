@@ -4,10 +4,10 @@ import os
 
 #lambda for putting order to dynamoDB
 def lambda_handler(event, context):
-    #data = boto3.client('dynamodb').put_item(TableName=os.environ['TableName'], Item=json.dumps(event))
+    data = boto3.client('dynamodb').put_item(TableName=os.environ['TableName'], Item=event['body'])
     response = {
         'statusCode': 200,
-        'body': event['body'],
+        'body': {"goatsacrificed": "yes"},
         'headers': {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*'
