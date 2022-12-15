@@ -9,8 +9,22 @@ Description: >
 Globals:
   Function:
     Timeout: 3
-
+Parameters:
+  Subemail: 
+    Type: String
+    Default: malgorzata.zaremba@brightstraining.com
 Resources:
+  MySNSTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      TopicName: "TaikamattoOrder"
+      KmsMasterKeyId: alias/aws/sns
+  MySubscription:
+    Type: AWS::SNS::Subscription
+    Properties:
+      Endpoint: !Ref Subemail
+      Protocol: email
+      TopicArn: !Ref MySNSTopic
   Project4Group2DynamoDB: 
     Type: AWS::DynamoDB::Table
     Properties: 
@@ -83,6 +97,7 @@ Resources:
         - AmazonDynamoDBFullAccess
       Environment:
         Variables:
+          TopicArn: !Ref MySNSTopic
           TableName: !Ref Project4Group2DynamoDB
       Events:
         GetInventory:
