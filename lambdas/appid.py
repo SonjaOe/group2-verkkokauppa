@@ -7,7 +7,7 @@ def lambda_handler(event, context):
 
   response = {
       'statusCode': 200,
-      'body': event,
+      'body': json.dumps(event['pathParameters']['id']),
       'headers': {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'

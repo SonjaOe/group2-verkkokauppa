@@ -107,7 +107,7 @@ Resources:
         GetInventory:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/
           Properties:
-            Path: /order 
+            Path: /order/{id} 
             Method: get
 
 Outputs:
