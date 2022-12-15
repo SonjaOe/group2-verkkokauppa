@@ -2,12 +2,12 @@ import json
 import boto3
 import os
 
-#lambda for putting order to dynamoDB
+#lambda for getting a spesific order from dynamoDB
 def lambda_handler(event, context):
-    data = boto3.client('dynamodb').put_item(TableName=os.environ['TableName'], Item=json.loads(event['body']))
+    data = boto3.client('dynamodb').get_item(TableName=os.environ['TableName'], Key=json.dump(event['body']))
     response = {
         'statusCode': 200,
-        'body': {"goatsacrificed": "yes"},
+        'body': json.dumps(data['Items']),
         'headers': {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': '*'
