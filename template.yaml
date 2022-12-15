@@ -94,7 +94,7 @@ Resources:
         - x86_64
       Policies:
         - AmazonDynamoDBFullAccess
-        - SNSFullAccess
+        - AmazonSNSFullAccess
       Environment:
         Variables:
           TopicArn: !Ref MySNSTopicTaikamatto
