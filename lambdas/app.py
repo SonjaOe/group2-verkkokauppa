@@ -22,4 +22,3 @@ def lambda_handler(event, context):
   
   return response
 
-print(f"this is a test for checkpoint week 10")
